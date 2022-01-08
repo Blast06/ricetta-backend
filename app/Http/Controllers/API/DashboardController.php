@@ -22,7 +22,7 @@ class DashboardController extends Controller
 
         $slider = SliderResource::collection(Slider::where('status',1)->paginate($per_page));
         
-        $latest_recipes = RecipeResource::collection(Recipe::where('status',1)->orderBy('id','DESC')->paginate($per_page));
+        $latest_recipes = RecipeResource::collection(Recipe::orderBy('id','DESC')->paginate($per_page));
 
         $category = CategoryResource::collection(Category::where('status',1)->paginate($per_page));
     

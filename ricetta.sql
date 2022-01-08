@@ -6,7 +6,11 @@
 -- Generation Time: Sep 13, 2021 at 12:28 PM
 -- Server version: 8.0.26-0ubuntu0.20.04.2
 -- PHP Version: 7.4.22
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"; SET AUTOCOMMIT = 0; START TRANSACTION; SET time_zone = "+00:00";
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -23,17 +27,19 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"; SET AUTOCOMMIT = 0; START TRANSACTION; S
 --
 -- Table structure for table `categories`
 --
+
 CREATE TABLE `categories` (
- `id` BIGINT UNSIGNED NOT NULL,
- `name` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `status` TINYINT DEFAULT '1',
- `created_at` TIMESTAMP NULL DEFAULT NULL,
- `updated_at` TIMESTAMP NULL DEFAULT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `categories`
 --
+
 INSERT INTO `categories` (`id`, `name`, `status`, `created_at`, `updated_at`) VALUES
 (1, 'Stater', 1, '2021-09-07 00:45:30', '2021-09-07 00:52:48'),
 (2, 'Snack', 1, '2021-09-07 00:47:50', '2021-09-07 00:47:50'),
@@ -47,14 +53,15 @@ INSERT INTO `categories` (`id`, `name`, `status`, `created_at`, `updated_at`) VA
 --
 -- Table structure for table `failed_jobs`
 --
+
 CREATE TABLE `failed_jobs` (
- `id` BIGINT UNSIGNED NOT NULL,
- `uuid` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `connection` TEXT COLLATE utf8mb4_unicode_ci NOT NULL,
- `queue` TEXT COLLATE utf8mb4_unicode_ci NOT NULL,
- `payload` LONGTEXT COLLATE utf8mb4_unicode_ci NOT NULL,
- `exception` LONGTEXT COLLATE utf8mb4_unicode_ci NOT NULL,
- `failed_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `id` bigint UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -62,25 +69,26 @@ CREATE TABLE `failed_jobs` (
 --
 -- Table structure for table `media`
 --
+
 CREATE TABLE `media` (
- `id` BIGINT UNSIGNED NOT NULL,
- `model_type` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `model_id` BIGINT UNSIGNED NOT NULL,
- `uuid` CHAR(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `collection_name` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `name` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `file_name` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `mime_type` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `disk` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `conversions_disk` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `size` BIGINT UNSIGNED NOT NULL,
- `manipulations` JSON NOT NULL,
- `custom_properties` JSON NOT NULL,
- `generated_conversions` JSON NOT NULL,
- `responsive_images` JSON NOT NULL,
- `order_column` INT UNSIGNED DEFAULT NULL,
- `created_at` TIMESTAMP NULL DEFAULT NULL,
- `updated_at` TIMESTAMP NULL DEFAULT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `model_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `model_id` bigint UNSIGNED NOT NULL,
+  `uuid` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `collection_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `file_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mime_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `disk` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `conversions_disk` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `size` bigint UNSIGNED NOT NULL,
+  `manipulations` json NOT NULL,
+  `custom_properties` json NOT NULL,
+  `generated_conversions` json NOT NULL,
+  `responsive_images` json NOT NULL,
+  `order_column` int UNSIGNED DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -88,15 +96,17 @@ CREATE TABLE `media` (
 --
 -- Table structure for table `migrations`
 --
+
 CREATE TABLE `migrations` (
- `id` INT UNSIGNED NOT NULL,
- `migration` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `batch` INT NOT NULL
+  `id` int UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
 --
+
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
@@ -119,10 +129,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 -- Table structure for table `password_resets`
 --
+
 CREATE TABLE `password_resets` (
- `email` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `token` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `created_at` TIMESTAMP NULL DEFAULT NULL
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -130,16 +141,17 @@ CREATE TABLE `password_resets` (
 --
 -- Table structure for table `personal_access_tokens`
 --
+
 CREATE TABLE `personal_access_tokens` (
- `id` BIGINT UNSIGNED NOT NULL,
- `tokenable_type` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `tokenable_id` BIGINT UNSIGNED NOT NULL,
- `name` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `token` VARCHAR(64) COLLATE utf8mb4_unicode_ci NOT NULL,
- `abilities` TEXT COLLATE utf8mb4_unicode_ci,
- `last_used_at` TIMESTAMP NULL DEFAULT NULL,
- `created_at` TIMESTAMP NULL DEFAULT NULL,
- `updated_at` TIMESTAMP NULL DEFAULT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -147,21 +159,22 @@ CREATE TABLE `personal_access_tokens` (
 --
 -- Table structure for table `recipes`
 --
+
 CREATE TABLE `recipes` (
- `id` BIGINT UNSIGNED NOT NULL,
- `title` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `portion_unit` INT DEFAULT NULL,
- `portion_type` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'piece , servings',
- `difficulty` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `preparation_time` VARCHAR(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `baking_time` VARCHAR(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `resting_time` VARCHAR(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `dish_type` TEXT COLLATE utf8mb4_unicode_ci,
- `cuisine` TEXT COLLATE utf8mb4_unicode_ci,
- `status` TINYINT DEFAULT '0',
- `user_id` BIGINT UNSIGNED NOT NULL,
- `created_at` TIMESTAMP NULL DEFAULT NULL,
- `updated_at` TIMESTAMP NULL DEFAULT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `portion_unit` int DEFAULT NULL,
+  `portion_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'piece , servings',
+  `difficulty` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `preparation_time` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `baking_time` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `resting_time` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dish_type` text COLLATE utf8mb4_unicode_ci,
+  `cuisine` text COLLATE utf8mb4_unicode_ci,
+  `status` tinyint DEFAULT '0',
+  `user_id` bigint UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -169,16 +182,17 @@ CREATE TABLE `recipes` (
 --
 -- Table structure for table `recipe_ingredients`
 --
+
 CREATE TABLE `recipe_ingredients` (
- `id` BIGINT UNSIGNED NOT NULL,
- `recipe_id` BIGINT UNSIGNED NOT NULL,
- `name` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `amount` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `unit` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `special_use` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `special_characteristics` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `created_at` TIMESTAMP NULL DEFAULT NULL,
- `updated_at` TIMESTAMP NULL DEFAULT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `recipe_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `amount` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `unit` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `special_use` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `special_characteristics` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -186,14 +200,15 @@ CREATE TABLE `recipe_ingredients` (
 --
 -- Table structure for table `recipe_steps`
 --
+
 CREATE TABLE `recipe_steps` (
- `id` BIGINT UNSIGNED NOT NULL,
- `recipe_id` BIGINT UNSIGNED NOT NULL,
- `description` TEXT COLLATE utf8mb4_unicode_ci,
- `ingredient_used_id` TEXT COLLATE utf8mb4_unicode_ci,
- `media_link` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `created_at` TIMESTAMP NULL DEFAULT NULL,
- `updated_at` TIMESTAMP NULL DEFAULT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `recipe_id` bigint UNSIGNED NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `ingredient_used_id` text COLLATE utf8mb4_unicode_ci,
+  `media_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -201,18 +216,20 @@ CREATE TABLE `recipe_steps` (
 --
 -- Table structure for table `static_data`
 --
+
 CREATE TABLE `static_data` (
- `id` BIGINT UNSIGNED NOT NULL,
- `type` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `value` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `label` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `created_at` TIMESTAMP NULL DEFAULT NULL,
- `updated_at` TIMESTAMP NULL DEFAULT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `value` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `label` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `static_data`
 --
+
 INSERT INTO `static_data` (`id`, `type`, `value`, `label`, `created_at`, `updated_at`) VALUES
 (1, 'cuisine', 'chinese', 'Chinese', '2021-09-07 00:57:44', '2021-09-07 00:57:44'),
 (2, 'cuisine', 'italian', 'Italian', '2021-09-07 00:58:16', '2021-09-07 00:58:16'),
@@ -288,18 +305,19 @@ INSERT INTO `static_data` (`id`, `type`, `value`, `label`, `created_at`, `update
 --
 -- Table structure for table `step_utensils`
 --
+
 CREATE TABLE `step_utensils` (
- `id` BIGINT UNSIGNED NOT NULL,
- `step_id` BIGINT UNSIGNED NOT NULL,
- `recipe_id` BIGINT UNSIGNED NOT NULL,
- `amount` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `name` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `special_use` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'for serving, optional',
- `special_characteristics` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'with lid,heavy-bottomed',
- `size` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'large ,small',
- `sequence` INT DEFAULT NULL,
- `created_at` TIMESTAMP NULL DEFAULT NULL,
- `updated_at` TIMESTAMP NULL DEFAULT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `step_id` bigint UNSIGNED NOT NULL,
+  `recipe_id` bigint UNSIGNED NOT NULL,
+  `amount` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `special_use` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'for serving, optional',
+  `special_characteristics` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'with lid,heavy-bottomed',
+  `size` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'large ,small',
+  `sequence` int DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -307,28 +325,30 @@ CREATE TABLE `step_utensils` (
 --
 -- Table structure for table `users`
 --
+
 CREATE TABLE `users` (
- `id` BIGINT UNSIGNED NOT NULL,
- `name` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `email` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `username` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `password` VARCHAR(255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `email_verified_at` TIMESTAMP NULL DEFAULT NULL,
- `user_type` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT 'user',
- `login_type` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `bio` TEXT COLLATE utf8mb4_unicode_ci,
- `gender` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `dob` DATE DEFAULT NULL,
- `player_id` VARCHAR(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `status` TINYINT DEFAULT '1',
- `remember_token` VARCHAR(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
- `created_at` TIMESTAMP NULL DEFAULT NULL,
- `updated_at` TIMESTAMP NULL DEFAULT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `user_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'user',
+  `login_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bio` text COLLATE utf8mb4_unicode_ci,
+  `gender` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `player_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` tinyint DEFAULT '1',
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
+
 INSERT INTO `users` (`id`, `name`, `email`, `username`, `password`, `email_verified_at`, `user_type`, `login_type`, `bio`, `gender`, `dob`, `player_id`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin@admin.com', 'admin', '$2y$10$2spOqTyUZlEauQNDTbS1BO2YznCPRpUa.i/GTlcSEScPfM.clUoJm', NULL, 'admin', NULL, NULL, 'Male', '2021-09-10', NULL, 1, NULL, '2021-07-27 04:20:00', '2021-09-10 12:42:28'),
 (2, 'Demo admin', 'demo@admin.com', 'demoadmin', '$2y$10$LHnCvMFXkZQ1wHEQMwdZduht0yweiM55B1Ab4dVIb.ooe//9.gKqy', NULL, 'demo_admin', NULL, NULL, NULL, NULL, NULL, 1, NULL, '2021-08-11 23:04:24', '2021-05-29 00:10:38');
@@ -338,12 +358,13 @@ INSERT INTO `users` (`id`, `name`, `email`, `username`, `password`, `email_verif
 --
 -- Table structure for table `user_bookmarks`
 --
+
 CREATE TABLE `user_bookmarks` (
- `id` BIGINT UNSIGNED NOT NULL,
- `recipe_id` BIGINT UNSIGNED NOT NULL,
- `user_id` BIGINT UNSIGNED NOT NULL,
- `created_at` TIMESTAMP NULL DEFAULT NULL,
- `updated_at` TIMESTAMP NULL DEFAULT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `recipe_id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -351,12 +372,13 @@ CREATE TABLE `user_bookmarks` (
 --
 -- Table structure for table `user_likes`
 --
+
 CREATE TABLE `user_likes` (
- `id` BIGINT UNSIGNED NOT NULL,
- `recipe_id` BIGINT UNSIGNED NOT NULL,
- `user_id` BIGINT UNSIGNED NOT NULL,
- `created_at` TIMESTAMP NULL DEFAULT NULL,
- `updated_at` TIMESTAMP NULL DEFAULT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `recipe_id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -364,14 +386,15 @@ CREATE TABLE `user_likes` (
 --
 -- Table structure for table `user_ratings`
 --
+
 CREATE TABLE `user_ratings` (
- `id` BIGINT UNSIGNED NOT NULL,
- `recipe_id` BIGINT UNSIGNED NOT NULL,
- `user_id` BIGINT UNSIGNED NOT NULL,
- `rating` DOUBLE DEFAULT NULL,
- `review` TEXT COLLATE utf8mb4_unicode_ci,
- `created_at` TIMESTAMP NULL DEFAULT NULL,
- `updated_at` TIMESTAMP NULL DEFAULT NULL
+  `id` bigint UNSIGNED NOT NULL,
+  `recipe_id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `rating` double DEFAULT NULL,
+  `review` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -381,77 +404,110 @@ CREATE TABLE `user_ratings` (
 --
 -- Indexes for table `categories`
 --
-ALTER TABLE `categories` ADD PRIMARY KEY (`id`);
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `failed_jobs`
 --
-ALTER TABLE `failed_jobs` ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
 -- Indexes for table `media`
 --
-ALTER TABLE `media` ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `media_uuid_unique` (`uuid`), ADD KEY `media_model_type_model_id_index` (`model_type`,`model_id`);
+ALTER TABLE `media`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `media_uuid_unique` (`uuid`),
+  ADD KEY `media_model_type_model_id_index` (`model_type`,`model_id`);
 
 --
 -- Indexes for table `migrations`
 --
-ALTER TABLE `migrations` ADD PRIMARY KEY (`id`);
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `password_resets`
 --
-ALTER TABLE `password_resets` ADD KEY `password_resets_email_index` (`email`);
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
 
 --
 -- Indexes for table `personal_access_tokens`
 --
-ALTER TABLE `personal_access_tokens` ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`), ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
 -- Indexes for table `recipes`
 --
-ALTER TABLE `recipes` ADD PRIMARY KEY (`id`), ADD KEY `recipes_user_id_foreign` (`user_id`);
+ALTER TABLE `recipes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `recipes_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `recipe_ingredients`
 --
-ALTER TABLE `recipe_ingredients` ADD PRIMARY KEY (`id`), ADD KEY `recipe_ingredients_recipe_id_foreign` (`recipe_id`);
+ALTER TABLE `recipe_ingredients`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `recipe_ingredients_recipe_id_foreign` (`recipe_id`);
 
 --
 -- Indexes for table `recipe_steps`
 --
-ALTER TABLE `recipe_steps` ADD PRIMARY KEY (`id`), ADD KEY `recipe_steps_recipe_id_foreign` (`recipe_id`);
+ALTER TABLE `recipe_steps`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `recipe_steps_recipe_id_foreign` (`recipe_id`);
 
 --
 -- Indexes for table `static_data`
 --
-ALTER TABLE `static_data` ADD PRIMARY KEY (`id`);
+ALTER TABLE `static_data`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `step_utensils`
 --
-ALTER TABLE `step_utensils` ADD PRIMARY KEY (`id`), ADD KEY `step_utensils_step_id_foreign` (`step_id`), ADD KEY `step_utensils_recipe_id_foreign` (`recipe_id`);
+ALTER TABLE `step_utensils`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `step_utensils_step_id_foreign` (`step_id`),
+  ADD KEY `step_utensils_recipe_id_foreign` (`recipe_id`);
 
 --
 -- Indexes for table `users`
 --
-ALTER TABLE `users` ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `users_email_unique` (`email`), ADD UNIQUE KEY `users_username_unique` (`username`);
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `users_username_unique` (`username`);
 
 --
 -- Indexes for table `user_bookmarks`
 --
-ALTER TABLE `user_bookmarks` ADD PRIMARY KEY (`id`), ADD KEY `user_bookmarks_recipe_id_foreign` (`recipe_id`), ADD KEY `user_bookmarks_user_id_foreign` (`user_id`);
+ALTER TABLE `user_bookmarks`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_bookmarks_recipe_id_foreign` (`recipe_id`),
+  ADD KEY `user_bookmarks_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `user_likes`
 --
-ALTER TABLE `user_likes` ADD PRIMARY KEY (`id`), ADD KEY `user_likes_recipe_id_foreign` (`recipe_id`), ADD KEY `user_likes_user_id_foreign` (`user_id`);
+ALTER TABLE `user_likes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_likes_recipe_id_foreign` (`recipe_id`),
+  ADD KEY `user_likes_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `user_ratings`
 --
-ALTER TABLE `user_ratings` ADD PRIMARY KEY (`id`), ADD KEY `user_ratings_recipe_id_foreign` (`recipe_id`), ADD KEY `user_ratings_user_id_foreign` (`user_id`);
+ALTER TABLE `user_ratings`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_ratings_recipe_id_foreign` (`recipe_id`),
+  ADD KEY `user_ratings_user_id_foreign` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -460,72 +516,86 @@ ALTER TABLE `user_ratings` ADD PRIMARY KEY (`id`), ADD KEY `user_ratings_recipe_
 --
 -- AUTO_INCREMENT for table `categories`
 --
-ALTER TABLE `categories` MODIFY `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `categories`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
-ALTER TABLE `failed_jobs` MODIFY `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `media`
 --
-ALTER TABLE `media` MODIFY `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `media`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
-ALTER TABLE `migrations` MODIFY `id` INT UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+ALTER TABLE `migrations`
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
 --
-ALTER TABLE `personal_access_tokens` MODIFY `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `recipes`
 --
-ALTER TABLE `recipes` MODIFY `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `recipes`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `recipe_ingredients`
 --
-ALTER TABLE `recipe_ingredients` MODIFY `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `recipe_ingredients`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `recipe_steps`
 --
-ALTER TABLE `recipe_steps` MODIFY `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `recipe_steps`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `static_data`
 --
-ALTER TABLE `static_data` MODIFY `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+ALTER TABLE `static_data`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `step_utensils`
 --
-ALTER TABLE `step_utensils` MODIFY `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `step_utensils`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
-ALTER TABLE `users` MODIFY `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `users`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_bookmarks`
 --
-ALTER TABLE `user_bookmarks` MODIFY `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `user_bookmarks`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_likes`
 --
-ALTER TABLE `user_likes` MODIFY `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `user_likes`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_ratings`
 --
-ALTER TABLE `user_ratings` MODIFY `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `user_ratings`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -534,51 +604,50 @@ ALTER TABLE `user_ratings` MODIFY `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for table `recipes`
 --
-ALTER TABLE `recipes` ADD CONSTRAINT `recipes_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON
-DELETE CASCADE;
+ALTER TABLE `recipes`
+  ADD CONSTRAINT `recipes_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `recipe_ingredients`
 --
-ALTER TABLE `recipe_ingredients` ADD CONSTRAINT `recipe_ingredients_recipe_id_foreign` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON
-DELETE CASCADE;
+ALTER TABLE `recipe_ingredients`
+  ADD CONSTRAINT `recipe_ingredients_recipe_id_foreign` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `recipe_steps`
 --
-ALTER TABLE `recipe_steps` ADD CONSTRAINT `recipe_steps_recipe_id_foreign` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON
-DELETE CASCADE;
+ALTER TABLE `recipe_steps`
+  ADD CONSTRAINT `recipe_steps_recipe_id_foreign` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `step_utensils`
 --
-ALTER TABLE `step_utensils` ADD CONSTRAINT `step_utensils_recipe_id_foreign` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON
-DELETE CASCADE, ADD CONSTRAINT `step_utensils_step_id_foreign` FOREIGN KEY (`step_id`) REFERENCES `recipe_steps` (`id`) ON
-DELETE CASCADE;
+ALTER TABLE `step_utensils`
+  ADD CONSTRAINT `step_utensils_recipe_id_foreign` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `step_utensils_step_id_foreign` FOREIGN KEY (`step_id`) REFERENCES `recipe_steps` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `user_bookmarks`
 --
-ALTER TABLE `user_bookmarks` ADD CONSTRAINT `user_bookmarks_recipe_id_foreign` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON
-DELETE CASCADE, ADD CONSTRAINT `user_bookmarks_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON
-DELETE CASCADE;
+ALTER TABLE `user_bookmarks`
+  ADD CONSTRAINT `user_bookmarks_recipe_id_foreign` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user_bookmarks_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `user_likes`
 --
-ALTER TABLE `user_likes` ADD CONSTRAINT `user_likes_recipe_id_foreign` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON
-DELETE CASCADE, ADD CONSTRAINT `user_likes_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON
-DELETE CASCADE;
+ALTER TABLE `user_likes`
+  ADD CONSTRAINT `user_likes_recipe_id_foreign` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user_likes_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `user_ratings`
 --
-ALTER TABLE `user_ratings` ADD CONSTRAINT `user_ratings_recipe_id_foreign` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON
-DELETE CASCADE, ADD CONSTRAINT `user_ratings_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON
-DELETE CASCADE; COMMIT;
+ALTER TABLE `user_ratings`
+  ADD CONSTRAINT `user_ratings_recipe_id_foreign` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user_ratings_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
