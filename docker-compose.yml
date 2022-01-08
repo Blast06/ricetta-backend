@@ -2,7 +2,7 @@ version: "3"
 
 services:
   web:
-    container_name: ngi_sis_facturacion
+    container_name: ngi_ricetta_backend
     build:
       context: ./
       dockerfile: docker/nginx/Dockerfile
@@ -13,7 +13,7 @@ services:
     links:
       - app
   app:
-    container_name: php_app_sis_facturacion
+    container_name: php_app_ricetta_backend
     build:
       context: ./
       dockerfile: docker/php-fpm/Dockerfile
@@ -28,7 +28,7 @@ services:
       - DB_HOST=db
       - DB_CONNECTION=mysql
   db:
-    container_name: mysql_sis_facturacion
+    container_name: mysql_ricetta_backend
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
