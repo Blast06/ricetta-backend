@@ -45,4 +45,4 @@ services:
 networks:
   default:
     external:
-      name: nginx-proxy2
+      name: nginx-proxy
