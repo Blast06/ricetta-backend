@@ -24,6 +24,7 @@ services:
     links:
       - db
     environment:
+      - VIRTUAL_HOST=ricetta-backend
       - DB_PORT=3306
       - DB_HOST=db
       - DB_CONNECTION=mysql
@@ -39,4 +40,9 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - 9090:9090
+
+networks:
+  default:
+    external:
+      name: nginx-proxy2
