@@ -2,7 +2,7 @@ version: "3"
 
 services:
   web:
-    container_name: ngi_ricetta_backend
+    container_name: ngi_ricetta_api
     build:
       context: ./
       dockerfile: docker/nginx/Dockerfile
@@ -13,7 +13,7 @@ services:
     links:
       - app
   app:
-    container_name: php_app_ricetta_backend
+    container_name: php_app_ricetta_api
     build:
       context: ./
       dockerfile: docker/php-fpm/Dockerfile
@@ -24,12 +24,11 @@ services:
     links:
       - db
     environment:
-      - VIRTUAL_HOST=ricetta-backend
       - DB_PORT=3306
       - DB_HOST=db
       - DB_CONNECTION=mysql
   db:
-    container_name: mysql_ricetta_backend
+    container_name: mysql_ricetta_api
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
@@ -40,9 +39,4 @@ services:
     image: adminer
     restart: always
     ports:
-      - 9090:9090
-
-networks:
-  default:
-    external:
-      name: nginx-proxy
+      - 8080:8080
