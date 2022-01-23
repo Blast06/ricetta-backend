@@ -7,7 +7,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN apt-get update && \
     apt-get install -y libzip-dev zlib1g-dev libonig-dev libicu-dev libpq-dev libmemcached-dev locales vim.tiny git
 
-RUN docker-php-ext-install mbstring zip pdo_pgsql pdo_mysql
+RUN docker-php-ext-install mbstring zip pdo_pgsql pdo_mysql exif
 
 # Genera 'locale' para es_AR
 RUN echo "es_AR.UTF-8 UTF-8" >> /etc/locale.gen
