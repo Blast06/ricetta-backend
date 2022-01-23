@@ -1,42 +1,42 @@
 version: "3"
 
 services:
-  web:
-    container_name: ngi_ricetta_api
-    build:
-      context: ./
-      dockerfile: docker/nginx/Dockerfile
-    volumes:
-      - ./:/var/www
-    ports:
-      - 8095:80
-    links:
-      - app
-  app:
-    container_name: php_app_ricetta_api
-    build:
-      context: ./
-      dockerfile: docker/php-fpm/Dockerfile
-    volumes:
-      - ./:/var/www
-    ports:
-      - 9000:9000
-    links:
-      - db
-    environment:
-      - DB_PORT=3306
-      - DB_HOST=db
-      - DB_CONNECTION=mysql
-  db:
-    container_name: mysql_ricetta_api
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: example
+    web:
+        container_name: ngi_ricetta_api
+        build:
+            context: ./
+            dockerfile: docker/nginx/Dockerfile
+        volumes:
+            - ./:/var/www
+        ports:
+            - 8095:80
+        links:
+            - app
+    app:
+        container_name: php_app_ricetta_api
+        build:
+            context: ./
+            dockerfile: docker/php-fpm/Dockerfile
+        volumes:
+            - ./:/var/www
+        ports:
+            - 9000:9000
+        links:
+            - db
+        environment:
+            - DB_PORT=3306
+            - DB_HOST=db
+            - DB_CONNECTION=mysql
+    db:
+        container_name: mysql_ricetta_api
+        image: mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: example
 
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8080:8080
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
