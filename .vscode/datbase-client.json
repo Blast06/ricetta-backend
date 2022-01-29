@@ -1,0 +1,43 @@
+{
+    "database.connections": {
+        "1643469681845": {
+            "host": "localhost",
+            "dbPath": "",
+            "port": "3306",
+            "user": "homestead",
+            "authType": "default",
+            "password": "secret",
+            "encoding": "utf8",
+            "clientKeyPath": null,
+            "clientCertPath": null,
+            "caPath": null,
+            "database": "homestead",
+            "useSSL": false,
+            "usingSSH": false,
+            "showHidden": false,
+            "includeDatabases": "",
+            "dbType": "MySQL",
+            "encrypt": true,
+            "isCluster": false,
+            "connectionUrl": "",
+            "srv": false,
+            "esAuth": "none",
+            "global": false,
+            "key": "1643469681845",
+            "timezone": "+00:00",
+            "ssh": {
+                "host": "",
+                "privateKeyPath": "C:\\Users\\JulioD07-D\\.ssh\\id_rsa",
+                "port": 22,
+                "username": "root",
+                "type": "password",
+                "connectTimeout": 10000,
+                "algorithms": {
+                    "cipher": []
+                }
+            },
+            "name": "mysql_ricetta",
+            "connectionKey": "database.connections"
+        }
+    }
+}
