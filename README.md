@@ -20,6 +20,7 @@ Three additional containers are included that handle Composer, NPM, and Artisan 
 - `docker-compose run --rm composer update`
 - `docker-compose run --rm npm run dev`
 - `docker-compose run --rm artisan migrate`
+- if get some error at creating folders with composer update, try this: chmod -R 777 myproject/
 
 ## Permissions Issues
 
