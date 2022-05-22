@@ -14,6 +14,11 @@ class RecipeRatingResource extends JsonResource
      */
     public function toArray($request)
     {
+        if(optional($this->user)->login_type == 'google'){
+            $profile_image = optional($this->user)->social_image;
+        }else{
+            $profile_image = ($this->user) ? getSingleMedia($this->user,'profile_image' ,null) : null;
+        }   
         return [
             'id'               => $this->id,
             'recipe_id'        => $this->recipe_id,
@@ -21,7 +26,7 @@ class RecipeRatingResource extends JsonResource
             'review'           => $this->review,
             'user_id'          => $this->user_id,
             'username'         => optional($this->user)->name,
-            'profile_image'    => ($this->user) ? getSingleMedia($this->user,'profile_image' ,null) : null,
+            'profile_image'    => $profile_image,
         ];
     }
 }

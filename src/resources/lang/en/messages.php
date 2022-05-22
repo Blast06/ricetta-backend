@@ -20,6 +20,7 @@
     'recipe_step'=>'Recipe Step',
     'steps_utensils'=>'Steps Utensils',
     'slider' => 'Slider',
+    'msg_removed' => ':name remove successfully'
 
 );
 ?>

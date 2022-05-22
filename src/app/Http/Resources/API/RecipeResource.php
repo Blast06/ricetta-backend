@@ -32,7 +32,8 @@ class RecipeResource extends JsonResource
             'is_bookmark'           => $this->getUserBookmark->where('user_id',$user_id)->first() ? 1 : 0,
             'total_review'          => $this->ratings->count('id'),
             'total_rating'          => count($this->ratings) > 0 ? max($this->ratings->avg('rating'),0) : 0,
-            'recipe_image'          => getSingleMedia($this, 'recipe_main_image',null),
+            'recipe_image'          => getAttachments($this->getMedia('recipe_main_image')),
+            'recipe_image_gallery'  => getAttachments($this->getMedia('recipe_image')),
             'like_count'            => $this->getUserLike->count()
         ];
     }

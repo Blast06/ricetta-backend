@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('gender')->nullable();
             $table->date('dob')->nullable();
             $table->string('player_id')->nullable();
+            $table->string('social_image')->nullable();
             $table->tinyInteger('status')->nullable()->default('1');
             $table->rememberToken();
             $table->timestamps();

@@ -20,13 +20,14 @@ class RecipeBookmarkResource extends JsonResource
             'id'                => $this->recipe_id,
             'user_id'           => $this->user_id,
             'title'             => $this->recipe->title,
-            'recipe_image'      => getSingleMedia($this->recipe, 'recipe_main_image',null),
+            'recipe_image'      => getAttachments($this->recipe->getMedia('recipe_main_image')),
             'is_like'           => $this->recipe->getUserLike->where('user_id',$user_id)->first() ? 1 : 0,
             'is_bookmark'       => 1,
             'like_count'        => $this->recipe->getUserLike->count(),
             'preparation_time'   => optional($this->recipe)->preparation_time ?? '-',
             'portion_unit'       => optional($this->recipe)->portion_unit ?? '-',
             'portion_type'       => optional($this->recipe)->portion_type ?? '-',
+            'recipe_image_gallery'  => getAttachments($this->recipe->getMedia('recipe_image')),
            
         ];
     }

@@ -18,9 +18,10 @@ class RecipeStepsResource extends JsonResource
             'id'                        => $this->id,
             'recipe_id'                 => $this->recipe_id,
             'description'               => $this->description,
-            'recipe_step_image'          => getSingleMedia($this, 'recipe_step_image',null),
+            'recipe_step_image'          => getAttachments($this->getMedia('recipe_step_image')),
             'ingredient_used_id'        => $this->ingredient_used_id,
             'utensil'                    => $this->utensil,
+            'step_image_gallery'         => getAttachments($this->getMedia('steps_image_gallery')),
         ];
     }
 }

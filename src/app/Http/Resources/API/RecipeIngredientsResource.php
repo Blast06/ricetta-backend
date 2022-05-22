@@ -21,7 +21,8 @@ class RecipeIngredientsResource extends JsonResource
             'amount'                       => $this->amount,
             'unit'                         => $this->unit,
             'special_use'                  => $this->special_use,
-            'recipe_image'                 => getSingleMedia($this->recipe, 'recipe_main_image',null),
+            'recipe_image'                 => getAttachments($this->recipe->getMedia('recipe_main_image')),
+            'recipe_image_gallery'         => getAttachments($this->recipe->getMedia('recipe_image')),
             'special_characteristics'      => $this->special_characteristics,
         ];
     }

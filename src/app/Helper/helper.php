@@ -62,7 +62,9 @@ function getFileExistsCheck($media)
 function storeMediaFile($model,$file,$name)
 {
     if($file) {
-        $model->clearMediaCollection($name);
+        if( !in_array($name, ['recipe_image','steps_image_gallery'])){
+            $model->clearMediaCollection($name);
+        }
         if (is_array($file)){
             foreach ($file as $key => $value){
                 $model->addMedia($value)->toMediaCollection($name);
@@ -81,14 +83,17 @@ function getAttachments($attchments)
     if (count($attchments) > 0) {
         foreach ($attchments as $attchment) {
             if (getFileExistsCheck($attchment)) {
-                array_push($files, $attchment->getFullUrl());
+                $file = [
+                    'id' => $attchment->id,
+                    'url'=> $attchment->getFullUrl()
+                ];
+                array_push($files, $file);
             }
         }
     }
 
     return $files;
 }
-
 function getMediaFileExit($model, $collection = 'profile_image')
 {
     if($model==null){

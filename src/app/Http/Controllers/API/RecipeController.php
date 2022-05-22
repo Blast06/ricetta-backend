@@ -26,6 +26,20 @@ class RecipeController extends Controller
         $result = Recipe::updateOrCreate(['id' => $request->id], $recipe_data);
     
         storeMediaFile($result,$request->recipe_image, 'recipe_main_image');
+        if($request->is('api/*')){
+			if($request->has('attachment_count')) {
+                $file = [];
+				for($i = 0 ; $i < $request->attachment_count ; $i++){
+					$attachment = 'recipe_image_'.$i;
+					if($request->$attachment != null){
+						$file[] = $request->$attachment;
+					}
+				}
+				storeMediaFile($result,$file, 'recipe_image');
+			}
+		} else {
+            storeMediaFile($result,$request->recipe_image, 'recipe_image');
+		}
     
         $message = __('messages.update_form',[ 'form' => __('messages.recipe') ] );
         if($result->wasRecentlyCreated){

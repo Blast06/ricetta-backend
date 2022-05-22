@@ -17,6 +17,20 @@ class RecipeStepsController extends Controller
         $result = RecipeStep::updateOrCreate(['id' => $request->id], $recipe_steps);
     
         storeMediaFile($result,$request->recipe_step_image, 'recipe_step_image');
+        if($request->is('api/*')){
+			if($request->has('attachment_count')) {
+                $file = [];
+				for($i = 0 ; $i < $request->attachment_count ; $i++){
+					$attachment = 'steps_image_gallery_'.$i;
+					if($request->$attachment != null){
+						$file[] = $request->$attachment;
+					}
+				}
+				storeMediaFile($result,$file, 'steps_image_gallery');
+			}
+		} else {
+            storeMediaFile($result,$request->steps_image_gallery, 'steps_image_gallery');
+		}
     /*
         $utensil_data =  !empty($recipe_steps['step_utensils']) ? json_decode($recipe_steps['step_utensils'] ,true) : null;
         

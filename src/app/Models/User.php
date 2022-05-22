@@ -23,7 +23,7 @@ class User extends Authenticatable implements HasMedia
         'name',
         'email',
         'password',
-        'username', 'email_verified_at', 'user_type', 'bio' , 'gender' , 'dob', 'player_id' , 'status','login_type'
+        'username', 'email_verified_at', 'user_type', 'bio' , 'gender' , 'dob', 'player_id' , 'status','login_type','social_image'
     ];
 
     /**

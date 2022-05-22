@@ -76,5 +76,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('save-bookmark',[ API\RecipeController::class, 'saveRecipeBookmark' ]);
     Route::post('delete-bookmark',[ API\RecipeController::class, 'deleteRecipeBookmark' ]);
     Route::get('get-user-bookmark',[API\RecipeController::class,'getUserBookmark']);
+    Route::post('remove-file', [ API\CommonController::class, 'removeFile' ] );
     
 });
