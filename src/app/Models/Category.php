@@ -14,4 +14,7 @@ class Category extends Model implements HasMedia
     protected $fillable = [
         'name', 'status'
     ];
+    protected $casts = [
+        'status'    => 'integer',
+    ];
 }

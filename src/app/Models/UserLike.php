@@ -12,4 +12,8 @@ class UserLike extends Model
     protected $fillable = [
         'recipe_id', 'user_id'
     ];
+    protected $casts = [
+        'recipe_id'    => 'integer',
+        'user_id'      => 'integer',
+    ];
 }

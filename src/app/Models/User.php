@@ -23,9 +23,10 @@ class User extends Authenticatable implements HasMedia
         'name',
         'email',
         'password',
-        'username', 'email_verified_at', 'user_type', 'bio' , 'gender' , 'dob', 'player_id' , 'status','login_type','social_image'
+        'username', 
+        'email_verified_at', 'user_type', 'bio' , 'gender' , 'dob', 'player_id' ,
+         'status','login_type','social_image'
     ];
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -43,5 +44,6 @@ class User extends Authenticatable implements HasMedia
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'status'    => 'integer',
     ];
 }

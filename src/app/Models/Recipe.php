@@ -15,7 +15,10 @@ class Recipe extends Model implements HasMedia
     protected $fillable = [
         'title', 'portion_unit', 'portion_type', 'difficulty', 'preparation_time' , 'baking_time' ,'resting_time' , 'dish_type','cuisine' , 'status', 'user_id' 
     ];
-
+    protected $casts = [
+        'status'    => 'integer',
+        'user_id' => 'integer'
+    ];
     public function recipeIngredients(){
         return $this->hasMany(RecipeIngredient::class, 'recipe_id','id');
     }
@@ -29,7 +32,7 @@ class Recipe extends Model implements HasMedia
     }
 
     public function users(){
-        return $this->belongsTo(User::class,'id', 'user_id');
+        return $this->belongsTo(User::class,'user_id', 'id');
     }
 
     public function getUserBookmark(){

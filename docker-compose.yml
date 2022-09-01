@@ -1,7 +1,7 @@
 version: '3'
 
 networks:
-  laravel:
+  nginx-proxy:
 
 services:
   site:
@@ -22,7 +22,7 @@ services:
       - mysql
       - mailhog
     networks:
-      - laravel
+      - nginx-proxy
 
   mysql:
     image: mariadb:10.6
@@ -38,8 +38,17 @@ services:
       MYSQL_ROOT_PASSWORD: secret
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
+       # NGINX-PROXY ENVIRONMENT VARIABLES: UPDATE ME
+      - VIRTUAL_HOST=your-website-one.com 
+      - VIRTUAL_PORT=80
+      - LETSENCRYPT_HOST=your-website-one.com 
+      - LETSENCRYPT_EMAIL=your.email@domain.com
+      # END NGINX-PROXY ENVIRONMENT VARIABLES
     networks:
-      - laravel
+      - nginx-proxy
+      default:
+      external:
+        name: nginx-proxy
 
   php:
     build:
@@ -52,7 +61,7 @@ services:
     volumes:
       - ./src:/var/www/html:delegated
     networks:
-      - laravel
+      - nginx-proxy
 
   redis:
     image: redis:alpine
@@ -61,7 +70,7 @@ services:
     ports:
       - 6379:6379
     networks:
-      - laravel
+      - nginx-proxy
 
   composer:
     build:
@@ -76,10 +85,10 @@ services:
     working_dir: /var/www/html
     depends_on:
       - php
-    user: laravel
+    user: nginx-proxy
     entrypoint: ['composer', '--ignore-platform-reqs']
     networks:
-      - laravel
+      - nginx-proxy
 
   npm:
     image: node:13.7
@@ -92,7 +101,7 @@ services:
     working_dir: /var/www/html
     entrypoint: ['npm']
     networks:
-      - laravel
+      - nginx-proxy
 
   artisan:
     build:
@@ -109,7 +118,7 @@ services:
     working_dir: /var/www/html
     entrypoint: ['php', '/var/www/html/artisan']
     networks:
-      - laravel
+      - nginx-proxy
 
   mailhog:
     image: mailhog/mailhog:latest
@@ -118,4 +127,4 @@ services:
       - 1025:1025
       - 8025:8025
     networks:
-      - laravel
+      - nginx-proxy
