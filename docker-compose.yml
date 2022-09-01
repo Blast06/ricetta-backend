@@ -3,6 +3,7 @@ version: '3'
 networks:
   nginx-proxy:
 
+
 services:
   site:
     build:
@@ -12,6 +13,8 @@ services:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
     container_name: nginx
+    environment:
+      - VIRTUAL_HOST=blast06.xyz/ricetta-dominicana
     ports:
       - 80:80
     volumes:
@@ -38,17 +41,8 @@ services:
       MYSQL_ROOT_PASSWORD: secret
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
-       # NGINX-PROXY ENVIRONMENT VARIABLES: UPDATE ME
-      - VIRTUAL_HOST=your-website-one.com 
-      - VIRTUAL_PORT=80
-      - LETSENCRYPT_HOST=your-website-one.com 
-      - LETSENCRYPT_EMAIL=your.email@domain.com
-      # END NGINX-PROXY ENVIRONMENT VARIABLES
     networks:
       - nginx-proxy
-      default:
-      external:
-        name: nginx-proxy
 
   php:
     build:
@@ -86,7 +80,7 @@ services:
     depends_on:
       - php
     user: nginx-proxy
-    entrypoint: ['composer', '--ignore-platform-reqs']
+    entrypoint: [ 'composer', '--ignore-platform-reqs' ]
     networks:
       - nginx-proxy
 
@@ -99,7 +93,7 @@ services:
       - 3000:3000
       - 3001:3001
     working_dir: /var/www/html
-    entrypoint: ['npm']
+    entrypoint: [ 'npm' ]
     networks:
       - nginx-proxy
 
@@ -116,7 +110,7 @@ services:
     depends_on:
       - mysql
     working_dir: /var/www/html
-    entrypoint: ['php', '/var/www/html/artisan']
+    entrypoint: [ 'php', '/var/www/html/artisan' ]
     networks:
       - nginx-proxy
 
