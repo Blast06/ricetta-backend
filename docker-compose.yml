@@ -1,22 +1,16 @@
 version: '3'
 
-networks:
-  nginx-proxy:
-
-
 services:
   site:
-    build:
-      context: ./dockerfiles
-      dockerfile: nginx.dockerfile
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
-    container_name: nginx
+    image: httpd
+    container_name: ricetta_dominicana
+    restart: always
     environment:
       - VIRTUAL_HOST=blast06.xyz/ricetta-dominicana
     ports:
-      - 80:80
+      - 82:80
+    expose:
+      - 82
     volumes:
       - ./src:/var/www/html:delegated
     depends_on:
@@ -26,6 +20,7 @@ services:
       - mailhog
     networks:
       - nginx-proxy
+        
 
   mysql:
     image: mariadb:10.6
