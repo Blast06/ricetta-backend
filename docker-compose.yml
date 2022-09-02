@@ -79,7 +79,7 @@ services:
     working_dir: /var/www/html
     depends_on:
       - php
-    user: nginx-proxy
+    user: laravel
     entrypoint: [ 'composer', '--ignore-platform-reqs' ]
     networks:
       - nginx-proxy
