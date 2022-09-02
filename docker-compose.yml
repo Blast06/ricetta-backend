@@ -20,8 +20,6 @@ services:
       - mailhog
     networks:
       - nginx-proxy
-        
-
   mysql:
     image: mariadb:10.6
     container_name: mysql
@@ -117,3 +115,7 @@ services:
       - 8025:8025
     networks:
       - nginx-proxy
+networks:
+  default:
+    external:
+      name: nginx-proxy
