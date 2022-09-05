@@ -12,7 +12,10 @@ class UserBookmark extends Model
     protected $fillable = [
         'recipe_id', 'user_id'
     ];
-
+    protected $casts = [
+        'recipe_id'    => 'integer',
+        'user_id'      => 'integer',
+    ];
     public function recipe(){
         return $this->belongsTo(Recipe::class,'recipe_id','id');
     }

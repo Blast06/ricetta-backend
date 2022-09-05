@@ -15,6 +15,11 @@ class RecipeResource extends JsonResource
     public function toArray($request)
     {
         $user_id = request()->user_id;
+        if(optional($this->users)->login_type == 'google'){
+            $profile_image = optional($this->users)->social_image;
+        }else{
+            $profile_image = ($this->users) ? getSingleMedia($this->users,'profile_image' ,null) : null;
+        }  
         return [
             'id'                    => $this->id,
             'title'                 => $this->title,
@@ -34,7 +39,10 @@ class RecipeResource extends JsonResource
             'total_rating'          => count($this->ratings) > 0 ? max($this->ratings->avg('rating'),0) : 0,
             'recipe_image'          => getAttachments($this->getMedia('recipe_main_image')),
             'recipe_image_gallery'  => getAttachments($this->getMedia('recipe_image')),
-            'like_count'            => $this->getUserLike->count()
+            'like_count'            => $this->getUserLike->count(),
+            'user_name'             => optional($this->users)->username,
+            'user_profile_image'    => $profile_image,
+            'created_at'            => $this->created_at
         ];
     }
 }

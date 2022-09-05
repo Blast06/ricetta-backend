@@ -212,7 +212,24 @@ CREATE TABLE `recipe_steps` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `sliders`
+--
+
+CREATE TABLE `sliders` (
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'category',
+  `type_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'category_id',
+  `status` tinyint DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
 --
 -- Table structure for table `static_data`
 --
@@ -462,7 +479,11 @@ ALTER TABLE `recipe_ingredients`
 ALTER TABLE `recipe_steps`
   ADD PRIMARY KEY (`id`),
   ADD KEY `recipe_steps_recipe_id_foreign` (`recipe_id`);
-
+--
+-- Indexes for table `sliders`
+--
+ALTER TABLE `sliders`
+  ADD PRIMARY KEY (`id`);
 --
 -- Indexes for table `static_data`
 --
@@ -560,7 +581,11 @@ ALTER TABLE `recipe_ingredients`
 --
 ALTER TABLE `recipe_steps`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
-
+--
+-- AUTO_INCREMENT for table `sliders`
+--
+ALTER TABLE `sliders`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `static_data`
 --

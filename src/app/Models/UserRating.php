@@ -12,6 +12,11 @@ class UserRating extends Model
     protected $fillable = [
         'recipe_id', 'rating', 'review','user_id'
     ];
+    protected $casts = [
+        'recipe_id'    => 'integer',
+        'user_id'      => 'integer',
+        'rating'      => 'double',
+    ];
 
     public function user(){
         return $this->belongsTo(User::class,'user_id', 'id');

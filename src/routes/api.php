@@ -31,6 +31,7 @@ Route::post('social-login',[ API\UserController::class, 'socialLogin' ]);
 
 Route::get('dashboard-detail',[ API\DashboardController::class, 'dashboardDetail' ]);
 Route::get('recipe-list',[API\RecipeController::class,'getRecipeList']);
+Route::post('search-recipe-list',[API\RecipeController::class,'getSearchRecipeList']);
 Route::get('recipe-detail',[API\RecipeController::class,'getRecipeDetail']);
 
 

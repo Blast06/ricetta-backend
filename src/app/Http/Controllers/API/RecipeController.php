@@ -69,6 +69,12 @@ class RecipeController extends Controller
         if($request->has('keyword') && !empty($request->keyword)){
             $recipes = $recipes->where('title', 'LIKE', '%' . $request->keyword . '%');
         }
+        if($request->has('dish_type') && !empty($request->dish_type)){
+            $recipes = $recipes->whereIn('dish_type',explode(",",$request->dish_type));
+        }
+        if($request->has('cuisine') && !empty($request->cuisine)){
+            $recipes = $recipes->whereIn('cuisine',explode(",",$request->cuisine));
+        }
         $per_page = config('constant.PER_PAGE_LIMIT');
     
         if( $request->has('per_page') && !empty($request->per_page)){
@@ -209,6 +215,49 @@ class RecipeController extends Controller
             'data' => $items,
         ];
     
+        return comman_custom_response($response);
+    }
+    public function getSearchRecipeList(Request $request){
+        $recipes = Recipe::where('status',$request->status);
+
+        if($request->has('keyword') && !empty($request->keyword)){
+            $recipes = $recipes->where('title', 'LIKE', '%' . $request->keyword . '%');
+        }
+        if($request->has('dish_type') && !empty($request->dish_type)){
+            $recipes = $recipes->whereIn('dish_type',explode(",",$request->dish_type));
+        }
+        if($request->has('cuisine') && !empty($request->cuisine)){
+            $recipes = $recipes->whereIn('cuisine',explode(",",$request->cuisine));
+        }
+        $per_page = config('constant.PER_PAGE_LIMIT');
+    
+        if( $request->has('per_page') && !empty($request->per_page)){
+            if(is_numeric($request->per_page)){
+                $per_page = $request->per_page;
+            }
+            if($request->per_page === 'all' || $request->per_page == -1){
+                $per_page = $recipes->count();
+            }
+        }
+    
+        $recipes = $recipes->orderBy('created_at','desc')->paginate($per_page);
+    
+        $items = RecipeResource::collection($recipes);
+    
+        $response = [
+            'pagination' => [
+                'total_items' => $items->total(),
+                'per_page' => $items->perPage(),
+                'currentPage' => $items->currentPage(),
+                'totalPages' => $items->lastPage(),
+                'from' => $items->firstItem(),
+                'to' => $items->lastItem(),
+                'next_page' => $items->nextPageUrl(),
+                'previous_page' => $items->previousPageUrl(),
+            ],
+            'data' => $items,
+        ];
+        
         return comman_custom_response($response);
     }
 }

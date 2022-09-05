@@ -1,19 +1,16 @@
 version: '3'
 
-networks:
-  laravel:
-
 services:
   site:
-    build:
-      context: ./dockerfiles
-      dockerfile: nginx.dockerfile
-      args:
-        - UID=${UID:-1000}
-        - GID=${GID:-1000}
-    container_name: nginx
+    image: httpd
+    container_name: ricetta_dominicana
+    restart: always
+    environment:
+      - VIRTUAL_HOST=blast06.xyz/ricetta-dominicana
     ports:
-      - 80:80
+      - 82:80
+    expose:
+      - 82
     volumes:
       - ./src:/var/www/html:delegated
     depends_on:
@@ -22,15 +19,14 @@ services:
       - mysql
       - mailhog
     networks:
-      - laravel
-
+      - nginx-proxy
   mysql:
     image: mariadb:10.6
     container_name: mysql
     restart: unless-stopped
     tty: true
     ports:
-      - 3306:3306
+      - 3307:3307
     environment:
       MYSQL_DATABASE: homestead
       MYSQL_USER: homestead
@@ -39,7 +35,7 @@ services:
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     networks:
-      - laravel
+      - nginx-proxy
 
   php:
     build:
@@ -52,7 +48,7 @@ services:
     volumes:
       - ./src:/var/www/html:delegated
     networks:
-      - laravel
+      - nginx-proxy
 
   redis:
     image: redis:alpine
@@ -61,7 +57,7 @@ services:
     ports:
       - 6379:6379
     networks:
-      - laravel
+      - nginx-proxy
 
   composer:
     build:
@@ -77,9 +73,9 @@ services:
     depends_on:
       - php
     user: laravel
-    entrypoint: ['composer', '--ignore-platform-reqs']
+    entrypoint: [ 'composer', '--ignore-platform-reqs' ]
     networks:
-      - laravel
+      - nginx-proxy
 
   npm:
     image: node:13.7
@@ -90,9 +86,9 @@ services:
       - 3000:3000
       - 3001:3001
     working_dir: /var/www/html
-    entrypoint: ['npm']
+    entrypoint: [ 'npm' ]
     networks:
-      - laravel
+      - nginx-proxy
 
   artisan:
     build:
@@ -107,9 +103,9 @@ services:
     depends_on:
       - mysql
     working_dir: /var/www/html
-    entrypoint: ['php', '/var/www/html/artisan']
+    entrypoint: [ 'php', '/var/www/html/artisan' ]
     networks:
-      - laravel
+      - nginx-proxy
 
   mailhog:
     image: mailhog/mailhog:latest
@@ -118,4 +114,7 @@ services:
       - 1025:1025
       - 8025:8025
     networks:
-      - laravel
+      - nginx-proxy
+networks:
+    nginx-proxy:
+      external: true
